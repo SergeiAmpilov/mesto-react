@@ -8,6 +8,7 @@ import trashLogo from '../images/trash-vector.svg';
 
 /* import components */
 import Header from './Header'
+import Main from './Main'
 import Footer from './Footer'
 
 function App() {
@@ -15,30 +16,9 @@ function App() {
     <div className="page">      
 
         <Header />
-
-        <main className="content">
-            <section className="profile">
-                <div className="profile__content">
-                    <div className="profile__avatar-group">
-                        <img src={custoLogo} alt="Логотип пользователя" className="profile__avatar" />
-                        <button title="Загрузить новый аватар" className="profile__avatar-button"></button>
-                    </div>
-                    <div className="profile__info">
-                        <h1 className="profile__title">Жак-Ив Кусто</h1>
-                        <p className="profile__subtitle">Исследователь океана</p>
-                        <button className="profile__pen" type="button" title="Редактировать"></button>
-                    </div>
-                </div>
-                <button className="profile__add-button" type="button" title="Добавить"></button>
-            </section>
-            <section>
-                <ul className="elements">
-                </ul>
-            </section>
-        </main>
-
+        <Main />
         <Footer />
-        
+
         <div className="popup popup_prefix_title">
             <div className="popup__container">
                 <button className="popup__close" type="button" title="Закрыть"></button>

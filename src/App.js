@@ -1,17 +1,22 @@
 import logo from './logo.svg';
 import './App.css';
 
+/* import images */
+import headerLogo from './images/header-logo.svg';
+import custoLogo from './images/custo-logo.jpg';
+import trashLogo from './images/trash-vector.svg';
+
 function App() {
   return (
     <body className="page">
         <header className="header">
-            <img src="<%=require('./images/header-logo.svg')%>" alt="Логотип Место" className="header__logo">
+            <img src={headerLogo} alt="Логотип Место" className="header__logo"/>
         </header>
         <main className="content">
             <section className="profile">
                 <div className="profile__content">
                     <div className="profile__avatar-group">
-                        <img src="<%=require('./images/custo-logo.jpg')%>" alt="Логотип пользователя" className="profile__avatar">
+                        <img src={custoLogo} alt="Логотип пользователя" className="profile__avatar" />
                         <button title="Загрузить новый аватар" className="profile__avatar-button"></button>
                     </div>
                     <div className="profile__info">
@@ -39,14 +44,14 @@ function App() {
                 <form className="popup__form" name="popup-form-profile" novalidate>
                     <label className="popup__form-group">
                         <input type="text" name="name" placeholder="Имя" className="popup__form-field popup__form-field_field_name" required 
-                        minlength="2" maxlength="40" id="name-input">
+                        minlength="2" maxlength="40" id="name-input" />
                         <span className="popup__error-text name-input-error">Сообщение об ошибке</span>
                     </label>
                     <label className="popup__form-group">
                         <input type="text" name="position" placeholder="Должность"
                             className="popup__form-field popup__form-field_field_position" required
                             minlength="2" maxlength="200"
-                            id="position-input">
+                            id="position-input" />
                         <span className="popup__error-text position-input-error">Сообщение об ошибке</span>
                     </label>
                     <button type="submit" className="popup__button-submit">Сохранить</button>
@@ -59,11 +64,11 @@ function App() {
                 <h3 className="popup__title">Новое место</h3>
                 <form className="popup__form" name="popup-form-card" novalidate>
                     <label for="" className="popup__form-group">
-                        <input type="text" name="name" id="place-input" placeholder="Название" className="popup__form-field popup__form-field_field_name"  minlength="2" maxlength="30" required>
+                        <input type="text" name="name" id="place-input" placeholder="Название" className="popup__form-field popup__form-field_field_name"  minlength="2" maxlength="30" required />
                         <span className="popup__error-text place-input-error">Сообщение об ошибке</span>
                     </label>
                     <label for="" className="popup__form-group">
-                        <input type="url" name="url" id="url-input" placeholder="Ссылка на картинку" className="popup__form-field popup__form-field_field_url" required>
+                        <input type="url" name="url" id="url-input" placeholder="Ссылка на картинку" className="popup__form-field popup__form-field_field_url" required />
                         <span className="popup__error-text url-input-error">Сообщение об ошибке</span>
                     </label>
                     <button type="submit" className="popup__button-submit">Создать</button>
@@ -76,7 +81,7 @@ function App() {
                 <img
                     src="https://images.unsplash.com/photo-1643560314434-0be8b0487daf?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1887&q=80"
                     alt=""
-                    className="images-full__img" >
+                    className="images-full__img" />
                 <p className="images-full__text">Описание картинки</p>
             </div>
         </div>
@@ -95,7 +100,7 @@ function App() {
                 <h3 className="popup__title">Обновить аватар</h3>
                 <form className='popup__form'>
                     <label for="" className="popup__form-group">
-                        <input type="url" name="url" id="avatar-input" placeholder="Ссылка на картинку" className="popup__form-field popup__form-field_field_url" required>
+                        <input type="url" name="url" id="avatar-input" placeholder="Ссылка на картинку" className="popup__form-field popup__form-field_field_url" required />
                         <span className="popup__error-text avatar-input-error">Сообщение об ошибке</span>
                     </label>
                     <button type="submit" className="popup__button-submit">Сохранить</button>
@@ -105,7 +110,7 @@ function App() {
         </div>
         <template className="item-template">
             <li className="element">
-                <img src="<%=require('./images/header-logo.svg')%>" alt="Карачаевск" className="element__image">
+                <img src={headerLogo} alt="Карачаевск" className="element__image" />
                 <div className="element__content">
                     <h2 className="element__title">Карачаевск</h2>
                     <div className="element__like-group">
@@ -113,7 +118,7 @@ function App() {
                         <p className="element__like-count">0</p>
                     </div>
                 </div>
-                <img src="<%=require('./images/trash-vector.svg')%>" alt="Удалить карточку" class="element__trash">            
+                <img src={trashLogo} alt="Удалить карточку" className="element__trash" />            
             </li>
         </template>
     </body>

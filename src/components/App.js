@@ -1,17 +1,21 @@
-import logo from './logo.svg';
-import './index.css' 
+import logo from '../logo.svg';
+import '../index.css' 
 
 /* import images */
-import headerLogo from './images/header-logo.svg';
-import custoLogo from './images/custo-logo.jpg';
-import trashLogo from './images/trash-vector.svg';
+
+import custoLogo from '../images/custo-logo.jpg';
+import trashLogo from '../images/trash-vector.svg';
+
+/* import components */
+import Header from './Header'
+import Footer from './Footer'
 
 function App() {
   return (
     <div className="page">      
-        <header className="header">
-            <img src={headerLogo} alt="Логотип Место" className="header__logo"/>
-        </header>
+
+        <Header />
+
         <main className="content">
             <section className="profile">
                 <div className="profile__content">
@@ -32,11 +36,9 @@ function App() {
                 </ul>
             </section>
         </main>
-        <footer className="footer">
-            <p className="footer__copyright">
-                © 2020 Mesto Russia
-            </p>
-        </footer>
+
+        <Footer />
+        
         <div className="popup popup_prefix_title">
             <div className="popup__container">
                 <button className="popup__close" type="button" title="Закрыть"></button>
@@ -110,7 +112,7 @@ function App() {
         </div>
         <template className="item-template">
             <li className="element">
-                <img src={headerLogo} alt="Карачаевск" className="element__image" />
+                <img src={custoLogo} alt="Карачаевск" className="element__image" />
                 <div className="element__content">
                     <h2 className="element__title">Карачаевск</h2>
                     <div className="element__like-group">

@@ -8,7 +8,7 @@ import trashLogo from './images/trash-vector.svg';
 
 function App() {
   return (
-    <body className="page">
+    <div className="page">      
         <header className="header">
             <img src={headerLogo} alt="Логотип Место" className="header__logo"/>
         </header>
@@ -121,7 +121,7 @@ function App() {
                 <img src={trashLogo} alt="Удалить карточку" className="element__trash" />            
             </li>
         </template>
-    </body>
+    </div>
   );
 }
 

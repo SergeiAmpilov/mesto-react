@@ -19,44 +19,8 @@ function App() {
         <Main />
         <Footer />
 
-        <div className="popup popup_prefix_title">
-            <div className="popup__container">
-                <button className="popup__close" type="button" title="Закрыть"></button>
-                <h3 className="popup__title">Редактировать профиль</h3>
-                <form className="popup__form" name="popup-form-profile" novalidate>
-                    <label className="popup__form-group">
-                        <input type="text" name="name" placeholder="Имя" className="popup__form-field popup__form-field_field_name" required 
-                        minlength="2" maxlength="40" id="name-input" />
-                        <span className="popup__error-text name-input-error">Сообщение об ошибке</span>
-                    </label>
-                    <label className="popup__form-group">
-                        <input type="text" name="position" placeholder="Должность"
-                            className="popup__form-field popup__form-field_field_position" required
-                            minlength="2" maxlength="200"
-                            id="position-input" />
-                        <span className="popup__error-text position-input-error">Сообщение об ошибке</span>
-                    </label>
-                    <button type="submit" className="popup__button-submit">Сохранить</button>
-                </form>
-            </div>
-        </div>
-        <div className="popup popup_prefix_card">
-            <div className="popup__container">
-                <button className="popup__close" type="button" title="Закрыть"></button>
-                <h3 className="popup__title">Новое место</h3>
-                <form className="popup__form" name="popup-form-card" novalidate>
-                    <label for="" className="popup__form-group">
-                        <input type="text" name="name" id="place-input" placeholder="Название" className="popup__form-field popup__form-field_field_name"  minlength="2" maxlength="30" required />
-                        <span className="popup__error-text place-input-error">Сообщение об ошибке</span>
-                    </label>
-                    <label for="" className="popup__form-group">
-                        <input type="url" name="url" id="url-input" placeholder="Ссылка на картинку" className="popup__form-field popup__form-field_field_url" required />
-                        <span className="popup__error-text url-input-error">Сообщение об ошибке</span>
-                    </label>
-                    <button type="submit" className="popup__button-submit">Создать</button>
-                </form>
-            </div>
-        </div>
+
+
         <div className="popup popup_prefix_image images-full">
             <div className="images-full__content">
                 <button className="popup__close images-full__close" type="button" title="Закрыть"></button>
@@ -74,20 +38,6 @@ function App() {
                 <form className='popup__form'>
                     <button type="submit" className="popup__button-submit">Да</button>
                 </form>
-            </div>
-        </div>
-        <div className="popup popup_prefix_avatar">
-            <div className="popup__container">
-                <button className="popup__close" type="button" title="Закрыть"></button>
-                <h3 className="popup__title">Обновить аватар</h3>
-                <form className='popup__form'>
-                    <label for="" className="popup__form-group">
-                        <input type="url" name="url" id="avatar-input" placeholder="Ссылка на картинку" className="popup__form-field popup__form-field_field_url" required />
-                        <span className="popup__error-text avatar-input-error">Сообщение об ошибке</span>
-                    </label>
-                    <button type="submit" className="popup__button-submit">Сохранить</button>
-                </form>
-
             </div>
         </div>
         <template className="item-template">

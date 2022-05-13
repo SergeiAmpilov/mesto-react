@@ -43,23 +43,38 @@ function App() {
             />
             <Footer />
 
-            <PopupWithForm
-                name="card"
-                title="Новое место"
-                isOpen={isAddPlacePopupOpen}
-            />
+            <PopupWithForm name="card" title="Новое место" isOpen={isAddPlacePopupOpen}>
+                <label className="popup__form-group">
+                    <input type="text" name="name" id="place-input" placeholder="Название" className="popup__form-field popup__form-field_field_name"  minLength="2" maxLength="30" required />
+                    <span className="popup__error-text place-input-error">Сообщение об ошибке</span>
+                </label>
+                <label className="popup__form-group">
+                    <input type="url" name="url" id="url-input" placeholder="Ссылка на картинку" className="popup__form-field popup__form-field_field_url" required />
+                    <span className="popup__error-text url-input-error">Сообщение об ошибке</span>
+                </label>
+            </PopupWithForm>
 
-            <PopupWithForm
-                name="avatar"
-                title="Новый аватар"
-                isOpen={isEditAvatarPopupOpen}
-            />
+            <PopupWithForm name="avatar" title="Обновить аватар" isOpen={isEditAvatarPopupOpen}>
+                <label className="popup__form-group">
+                    <input type="url" name="url" id="avatar-input" placeholder="Ссылка на картинку" className="popup__form-field popup__form-field_field_url" required />
+                    <span className="popup__error-text avatar-input-error">Сообщение об ошибке</span>
+                </label>
+            </PopupWithForm>
 
-            <PopupWithForm
-                name="title"
-                title="Редактировать профиль"
-                isOpen={isEditProfilePopupOpen}
-            />
+            <PopupWithForm name="title" title="Редактировать профиль" isOpen={isEditProfilePopupOpen}>
+                <label className="popup__form-group">
+                    <input type="text" name="name" placeholder="Имя" className="popup__form-field popup__form-field_field_name" required 
+                    minLength="2" maxLength="40" id="name-input" />
+                    <span className="popup__error-text name-input-error">Сообщение об ошибке</span>
+                </label>
+                <label className="popup__form-group">
+                    <input type="text" name="position" placeholder="Должность"
+                        className="popup__form-field popup__form-field_field_position" required
+                        minLength="2" maxLength="200"
+                        id="position-input" />
+                    <span className="popup__error-text position-input-error">Сообщение об ошибке</span>
+                </label>
+            </PopupWithForm>
 
 
             <template className="item-template">

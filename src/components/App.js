@@ -38,6 +38,15 @@ function App() {
     const handleConfirmPopupOpen = () => setIsConfirmPopupOpen(true);
     const handleImagePopupOpen = () => setIsImagePopupOpen(true);
 
+    const closeAllPopups = () => {
+        setIsEditAvatarPopupOpen(false)
+        setIsEditProfilePopupOpen(false)
+        setIsAddPlacePopupOpen(false)
+        setIsConfirmPopupOpen(false)
+        setIsImagePopupOpen(false)
+
+    };
+
     return (
         <div className="page">      
 
@@ -49,7 +58,7 @@ function App() {
             />
             <Footer />
 
-            <PopupWithForm name="card" title="Новое место" isOpen={isAddPlacePopupOpen}>
+            <PopupWithForm name="card" title="Новое место" isOpen={isAddPlacePopupOpen} onClose={closeAllPopups}>
                 <label className="popup__form-group">
                     <input type="text" name="name" id="place-input" placeholder="Название" className="popup__form-field popup__form-field_field_name"  minLength="2" maxLength="30" required />
                     <span className="popup__error-text place-input-error">Сообщение об ошибке</span>
@@ -60,14 +69,14 @@ function App() {
                 </label>
             </PopupWithForm>
 
-            <PopupWithForm name="avatar" title="Обновить аватар" isOpen={isEditAvatarPopupOpen}>
+            <PopupWithForm name="avatar" title="Обновить аватар" isOpen={isEditAvatarPopupOpen} onClose={closeAllPopups}>
                 <label className="popup__form-group">
                     <input type="url" name="url" id="avatar-input" placeholder="Ссылка на картинку" className="popup__form-field popup__form-field_field_url" required />
                     <span className="popup__error-text avatar-input-error">Сообщение об ошибке</span>
                 </label>
             </PopupWithForm>
 
-            <PopupWithForm name="title" title="Редактировать профиль" isOpen={isEditProfilePopupOpen}>
+            <PopupWithForm name="title" title="Редактировать профиль" isOpen={isEditProfilePopupOpen} onClose={closeAllPopups}>
                 <label className="popup__form-group">
                     <input type="text" name="name" placeholder="Имя" className="popup__form-field popup__form-field_field_name" required 
                     minLength="2" maxLength="40" id="name-input" />
@@ -81,8 +90,8 @@ function App() {
                     <span className="popup__error-text position-input-error">Сообщение об ошибке</span>
                 </label>
             </PopupWithForm>
-            <PopupWithForm name="confirm" title="Вы уверены ?" isOpen={isConfirmPopupOpen}></PopupWithForm>
-            <ImagePopup isOpen={isImagePopupOpen} />
+            <PopupWithForm name="confirm" title="Вы уверены ?" isOpen={isConfirmPopupOpen} onClose={closeAllPopups} />
+            <ImagePopup isOpen={isImagePopupOpen} onClose={closeAllPopups} />
 
 
             <template className="item-template">

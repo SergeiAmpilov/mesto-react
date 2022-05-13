@@ -13,12 +13,15 @@ import Header from './Header'
 import Main from './Main'
 import Footer from './Footer'
 import PopupWithForm from './PopupWithForm'
+import ImagePopup from './ImagePopup'
 
 function App() {
 
     const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = React.useState(false);
     const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = React.useState(false);
     const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = React.useState(false);
+    const [isConfirmPopupOpen, setIsConfirmPopupOpen] = React.useState(false);
+    const [isImagePopupOpen, setIsImagePopupOpen] = React.useState(false);
 
     const handleEditAvatarClick = (event) => {
         setIsEditAvatarPopupOpen(true)
@@ -31,6 +34,9 @@ function App() {
     const handleAddPlaceClick =  (event) => {
         setIsAddPlacePopupOpen(true);
     }
+
+    const handleConfirmPopupOpen = () => setIsConfirmPopupOpen(true);
+    const handleImagePopupOpen = () => setIsImagePopupOpen(true);
 
     return (
         <div className="page">      
@@ -75,6 +81,8 @@ function App() {
                     <span className="popup__error-text position-input-error">Сообщение об ошибке</span>
                 </label>
             </PopupWithForm>
+            <PopupWithForm name="confirm" title="Вы уверены ?" isOpen={isConfirmPopupOpen}></PopupWithForm>
+            <ImagePopup isOpen={isImagePopupOpen} />
 
 
             <template className="item-template">

@@ -1,8 +1,8 @@
 import React from 'react';
 
-function ImagePopup() {
+function ImagePopup(props) {
     return (
-        <div className="popup popup_prefix_image images-full">
+        <div className={`popup popup_prefix_image images-full ${props.isOpen ? 'popup_visible' : ''}`}>            
             <div className="images-full__content">
                 <button className="popup__close images-full__close" type="button" title="Закрыть"></button>
                 <img

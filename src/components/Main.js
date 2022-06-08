@@ -1,8 +1,6 @@
 import React from 'react';
 
-import custoLogo from '../images/custo-logo.jpg';
-import PopupWithForm from './PopupWithForm.js';
-import trashButtonImg from '../images/trash-vector.svg';
+import Card from './Card'
 import api from '../utils/Api.js'
 
 function Main(props) {
@@ -47,21 +45,7 @@ function Main(props) {
             </section>
             <section>
                 <ul className="elements">
-                    {
-                        cards.map( (el, i) => (
-                            <li className="element" key={el._id}>
-                                <img src={el.link} alt={el.name} className="element__image"/>
-                                <div className="element__content">
-                                    <h2 className="element__title">{el.name}</h2>
-                                    <div className="element__like-group">
-                                        <button className="element__like" type="button" title="Нравится"></button>
-                                        <p className="element__like-count">{el.likes.length}</p>
-                                    </div>
-                                </div>
-                                <img src={trashButtonImg} alt="Удалить карточку" className="element__trash"/>            
-                            </li>
-                        ))
-                    }
+                    { cards.map( el => <Card element={el} key={el._id}/> ) }
                 </ul>
             </section>
         </main>

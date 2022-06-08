@@ -2,11 +2,13 @@ import React from 'react';
 
 import trashButtonImg from '../images/trash-vector.svg';
 
-function Card({element}) {
+function Card({element, onCardClick}) {
+
+    const onClickHandler = () => onCardClick(element)    
 
     return (
         <li className="element">
-            <img src={element.link} alt={element.name} className="element__image"/>
+            <img src={element.link} alt={element.name} className="element__image" onClick={onClickHandler}/>
             <div className="element__content">
                 <h2 className="element__title">{element.name}</h2>
                 <div className="element__like-group">

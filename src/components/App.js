@@ -23,6 +23,7 @@ function App() {
     const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = React.useState(false);
     const [isConfirmPopupOpen, setIsConfirmPopupOpen] = React.useState(false);
     const [isImagePopupOpen, setIsImagePopupOpen] = React.useState(false);
+    const [selectedCard, setSelectedCard] = React.useState(false);
 
     const handleEditAvatarClick = (event) => {
         setIsEditAvatarPopupOpen(true)
@@ -36,8 +37,10 @@ function App() {
         setIsAddPlacePopupOpen(true);
     }
 
-    const handleConfirmPopupOpen = () => setIsConfirmPopupOpen(true);
-    const handleImagePopupOpen = () => setIsImagePopupOpen(true);
+    const handleCardClick = (card) => {
+        setSelectedCard(card);
+        setIsImagePopupOpen(true);
+    }
 
     const closeAllPopups = () => {
         setIsEditAvatarPopupOpen(false)
@@ -45,7 +48,6 @@ function App() {
         setIsAddPlacePopupOpen(false)
         setIsConfirmPopupOpen(false)
         setIsImagePopupOpen(false)
-
     };
 
     return (
@@ -55,6 +57,7 @@ function App() {
                 onEditProfile = {handleEditProfileClick}
                 onAddPlace = {handleAddPlaceClick}
                 onEditAvatar = {handleEditAvatarClick}
+                onCardClick = {handleCardClick}
             />
             <Footer />
 
@@ -91,7 +94,7 @@ function App() {
                 </label>
             </PopupWithForm>
             <PopupWithForm name="confirm" title="Вы уверены ?" isOpen={isConfirmPopupOpen} onClose={closeAllPopups} />
-            <ImagePopup isOpen={isImagePopupOpen} onClose={closeAllPopups} />
+            <ImagePopup isOpen={isImagePopupOpen} onClose={closeAllPopups} card={selectedCard}/>
 
 
             <template className="item-template">

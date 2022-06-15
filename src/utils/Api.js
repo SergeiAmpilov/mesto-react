@@ -15,7 +15,7 @@ class Api {
         };
 
         if (body) {
-            reqObject['body'] = JSON.stringify(body);
+            reqObject.body = JSON.stringify(body);
         }
 
         return fetch(this._baseUrl + path, reqObject)

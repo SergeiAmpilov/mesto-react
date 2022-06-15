@@ -13,15 +13,10 @@
     /* transform: translate(-50%, -50%); */
     opacity: 0;
     opacity: 1;
-    /* visibility: hidden; */
+    visibility: hidden;
     transition: all .1s linear;
     border-radius: 50%;
     cursor: pointer;
     margin: 0;
     padding: 0;
-}
-
-
-.profile__avatar-button:hover {
-    visibility: visible;   
 }

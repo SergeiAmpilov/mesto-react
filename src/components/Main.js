@@ -9,6 +9,7 @@ function Main({ onEditAvatar, onEditProfile, onAddPlace, onCardClick }) {
     const [userDescription, setUserDescription] = React.useState('');
     const [userAvatar, setUserAvatar] = React.useState('');
     const [cards, setCards] = React.useState([]);
+    const [isEditButtonHovered, setIsEditButtonHovered] = React.useState(false);
 
     const cardsElements = cards.map( el => <Card element={el} key={el._id} onCardClick={onCardClick}/> )
     
@@ -36,8 +37,21 @@ function Main({ onEditAvatar, onEditProfile, onAddPlace, onCardClick }) {
             <section className="profile">
                 <div className="profile__content">
                     <div className="profile__avatar-group">
-                        <img src={userAvatar} alt="Логотип пользователя" className="profile__avatar" />
-                        <button title="Загрузить новый аватар" className="profile__avatar-button" onClick={onEditAvatar}></button>
+                        <img
+                            src={userAvatar}
+                            alt="Логотип пользователя"
+                            className="profile__avatar"
+                            onMouseOver={ () => setIsEditButtonHovered(true)}
+                            />
+                        <button
+                            title="Загрузить новый аватар"
+                            className="profile__avatar-button"
+                            onClick={onEditAvatar}
+                            onMouseOut={ () => setIsEditButtonHovered(false) }
+                            style={{
+                                visibility: isEditButtonHovered ? 'visible' : 'hidden' 
+                            }}
+                            ></button>
                     </div>
                     <div className="profile__info">
                         <h1 className="profile__title">{userName}</h1>

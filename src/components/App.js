@@ -1,6 +1,6 @@
 import React from 'react';
 
-import logo from '../logo.svg';
+
 import '../index.css' 
 
 /* import images */
@@ -23,7 +23,7 @@ function App() {
     const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = React.useState(false);
     const [isConfirmPopupOpen, setIsConfirmPopupOpen] = React.useState(false);
     const [isImagePopupOpen, setIsImagePopupOpen] = React.useState(false);
-    const [selectedCard, setSelectedCard] = React.useState(false);
+    const [selectedCard, setSelectedCard] = React.useState({});
 
     const handleEditAvatarClick = (event) => {
         setIsEditAvatarPopupOpen(true)
@@ -61,37 +61,49 @@ function App() {
             />
             <Footer />
 
-            <PopupWithForm name="card" title="Новое место" isOpen={isAddPlacePopupOpen} onClose={closeAllPopups}>
-                <label className="popup__form-group">
-                    <input type="text" name="name" id="place-input" placeholder="Название" className="popup__form-field popup__form-field_field_name"  minLength="2" maxLength="30" required />
-                    <span className="popup__error-text place-input-error">Сообщение об ошибке</span>
-                </label>
-                <label className="popup__form-group">
-                    <input type="url" name="url" id="url-input" placeholder="Ссылка на картинку" className="popup__form-field popup__form-field_field_url" required />
-                    <span className="popup__error-text url-input-error">Сообщение об ошибке</span>
-                </label>
+            <PopupWithForm
+                name="card"
+                title="Новое место"
+                isOpen={isAddPlacePopupOpen}
+                onClose={closeAllPopups} >
+                    <label className="popup__form-group">
+                        <input type="text" name="name" id="place-input" placeholder="Название" className="popup__form-field popup__form-field_field_name"  minLength="2" maxLength="30" required />
+                        <span className="popup__error-text place-input-error">Сообщение об ошибке</span>
+                    </label>
+                    <label className="popup__form-group">
+                        <input type="url" name="url" id="url-input" placeholder="Ссылка на картинку" className="popup__form-field popup__form-field_field_url" required />
+                        <span className="popup__error-text url-input-error">Сообщение об ошибке</span>
+                    </label>
             </PopupWithForm>
 
-            <PopupWithForm name="avatar" title="Обновить аватар" isOpen={isEditAvatarPopupOpen} onClose={closeAllPopups}>
-                <label className="popup__form-group">
-                    <input type="url" name="url" id="avatar-input" placeholder="Ссылка на картинку" className="popup__form-field popup__form-field_field_url" required />
-                    <span className="popup__error-text avatar-input-error">Сообщение об ошибке</span>
-                </label>
+            <PopupWithForm
+                name="avatar"
+                title="Обновить аватар"
+                isOpen={isEditAvatarPopupOpen}
+                onClose={closeAllPopups} >
+                    <label className="popup__form-group">
+                        <input type="url" name="url" id="avatar-input" placeholder="Ссылка на картинку" className="popup__form-field popup__form-field_field_url" required />
+                        <span className="popup__error-text avatar-input-error">Сообщение об ошибке</span>
+                    </label>
             </PopupWithForm>
 
-            <PopupWithForm name="title" title="Редактировать профиль" isOpen={isEditProfilePopupOpen} onClose={closeAllPopups}>
-                <label className="popup__form-group">
-                    <input type="text" name="name" placeholder="Имя" className="popup__form-field popup__form-field_field_name" required 
-                    minLength="2" maxLength="40" id="name-input" />
-                    <span className="popup__error-text name-input-error">Сообщение об ошибке</span>
-                </label>
-                <label className="popup__form-group">
-                    <input type="text" name="position" placeholder="Должность"
-                        className="popup__form-field popup__form-field_field_position" required
-                        minLength="2" maxLength="200"
-                        id="position-input" />
-                    <span className="popup__error-text position-input-error">Сообщение об ошибке</span>
-                </label>
+            <PopupWithForm
+                name="title"
+                title="Редактировать профиль"
+                isOpen={isEditProfilePopupOpen}
+                onClose={closeAllPopups} >
+                    <label className="popup__form-group">
+                        <input type="text" name="name" placeholder="Имя" className="popup__form-field popup__form-field_field_name" required 
+                        minLength="2" maxLength="40" id="name-input" />
+                        <span className="popup__error-text name-input-error">Сообщение об ошибке</span>
+                    </label>
+                    <label className="popup__form-group">
+                        <input type="text" name="position" placeholder="Должность"
+                            className="popup__form-field popup__form-field_field_position" required
+                            minLength="2" maxLength="200"
+                            id="position-input" />
+                        <span className="popup__error-text position-input-error">Сообщение об ошибке</span>
+                    </label>
             </PopupWithForm>
             <PopupWithForm name="confirm" title="Вы уверены ?" isOpen={isConfirmPopupOpen} onClose={closeAllPopups} />
             <ImagePopup isOpen={isImagePopupOpen} onClose={closeAllPopups} card={selectedCard}/>

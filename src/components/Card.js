@@ -4,11 +4,11 @@ import trashButtonImg from '../images/trash-vector.svg';
 
 function Card({element, onCardClick}) {
 
-    const onClickHandler = () => onCardClick(element)    
-
+    const handleImgClick = () => onCardClick(element)
+        
     return (
         <li className="element">
-            <img src={element.link} alt={element.name} className="element__image" onClick={onClickHandler}/>
+            <img src={element.link} alt={element.name} className="element__image" onClick={handleImgClick}/>
             <div className="element__content">
                 <h2 className="element__title">{element.name}</h2>
                 <div className="element__like-group">

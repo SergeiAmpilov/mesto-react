@@ -3,18 +3,25 @@ import React from 'react';
 import Card from './Card'
 import api from '../utils/Api.js'
 
+import { currentUserContext } from '../contexts/CurrentUserContext';
+
+
 function Main({ onEditAvatar, onEditProfile, onAddPlace, onCardClick }) {
 
-    const [userName, setUserName] = React.useState('');
-    const [userDescription, setUserDescription] = React.useState('');
-    const [userAvatar, setUserAvatar] = React.useState('');
+    // const [userName, setUserName] = React.useState('');
+    // const [userDescription, setUserDescription] = React.useState('');
+    // const [userAvatar, setUserAvatar] = React.useState('');
     const [cards, setCards] = React.useState([]);
     const [isEditButtonHovered, setIsEditButtonHovered] = React.useState(false);
 
     const cardsElements = cards.map( el => <Card element={el} key={el._id} onCardClick={onCardClick}/> )
+
+    const currentUser = React.useContext(currentUserContext);
     
 
     React.useEffect(() => {
+
+        /*
         api.getProfileInfo()
             .then((profileData) => {
                 setUserName(profileData.name);
@@ -22,6 +29,7 @@ function Main({ onEditAvatar, onEditProfile, onAddPlace, onCardClick }) {
                 setUserAvatar(profileData.avatar);
             })
             .catch(err => console.log(`Ошибка.....: ${err}`));
+            */
 
         api.getCards()
             .then((cardList) => {
@@ -38,7 +46,7 @@ function Main({ onEditAvatar, onEditProfile, onAddPlace, onCardClick }) {
                 <div className="profile__content">
                     <div className="profile__avatar-group">
                         <img
-                            src={userAvatar}
+                            src={currentUser.avatar}
                             alt="Логотип пользователя"
                             className="profile__avatar"
                             onMouseOver={ () => setIsEditButtonHovered(true)}
@@ -54,8 +62,8 @@ function Main({ onEditAvatar, onEditProfile, onAddPlace, onCardClick }) {
                             ></button>
                     </div>
                     <div className="profile__info">
-                        <h1 className="profile__title">{userName}</h1>
-                        <p className="profile__subtitle">{userDescription}</p>
+                        <h1 className="profile__title">{currentUser.name}</h1>
+                        <p className="profile__subtitle">{currentUser.about}</p>
                         <button className="profile__pen" type="button" title="Редактировать" onClick={onEditProfile}></button>
                     </div>
                 </div>

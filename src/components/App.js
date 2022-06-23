@@ -15,6 +15,9 @@ import Footer from './Footer'
 import PopupWithForm from './PopupWithForm'
 import ImagePopup from './ImagePopup'
 
+import api from '../utils/Api.js'
+import { currentUserContext } from '../contexts/CurrentUserContext';
+
 
 function App() {
 
@@ -24,6 +27,8 @@ function App() {
     const [isConfirmPopupOpen, setIsConfirmPopupOpen] = React.useState(false);
     const [isImagePopupOpen, setIsImagePopupOpen] = React.useState(false);
     const [selectedCard, setSelectedCard] = React.useState({});
+
+    const [currentUser, setCurrentUser] = React.useState({});
 
     const handleEditAvatarClick = (event) => {
         setIsEditAvatarPopupOpen(true)
@@ -50,8 +55,16 @@ function App() {
         setIsImagePopupOpen(false)
     };
 
+    React.useEffect(() => {
+        api.getProfileInfo()
+            .then((profileData) => {
+                setCurrentUser(profileData)
+            })
+            .catch(err => console.log(`Ошибка.....: ${err}`));
+    }, []);
+
     return (
-        <>   
+        <currentUserContext.Provider value={currentUser}>   
             <Header />
             <Main 
                 onEditProfile = {handleEditProfileClick}
@@ -122,7 +135,7 @@ function App() {
                     <img src={trashLogo} alt="Удалить карточку" className="element__trash" />            
                 </li>
             </template>
-        </>
+        </currentUserContext.Provider>
     );
 }
 

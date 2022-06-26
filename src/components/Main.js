@@ -20,19 +20,32 @@ function Main({ onEditAvatar, onEditProfile, onAddPlace, onCardClick }) {
         if (isLiked) {
             api.unlike(card._id)
                 .then( (newCard) => {
-                    console.log('unlike', newCard);
                     setCards((state) => state.map((c) => c._id === card._id ? newCard : c));
                 });
         } else {
             api.like(card._id)
                 .then( (newCard) => {
-                    console.log('like', newCard);
                     setCards((state) => state.map((c) => c._id === card._id ? newCard : c));
                 });
         }
-    } 
+    }
 
-    const cardsElements = cards.map( el => <Card element={el} key={el._id} onCardClick={onCardClick} onCardLike={handleCardLike}/> )
+    const handleCardDelete = (card) => {
+        api.deleteCard(card._id)
+            .then( () => {
+                setCards(
+                    cards.slice().filter( (c) => c._id !== card._id )
+                )
+            })
+    }
+
+    const cardsElements = cards.map( el => <Card 
+        element={el}
+        key={el._id}
+        onCardClick={onCardClick}
+        onCardLike={handleCardLike}
+        onCardDelete={handleCardDelete}
+        /> )
 
     const currentUser = React.useContext(currentUserContext);
 
@@ -42,6 +55,8 @@ function Main({ onEditAvatar, onEditProfile, onAddPlace, onCardClick }) {
 
         api.getCards()
             .then((cardList) => {
+                console.log('cardlist');
+                console.log(cardList);
                 setCards(cardList);
             })
             .catch(err => console.log(`Ошибка.....: ${err}`));

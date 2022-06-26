@@ -21,12 +21,14 @@ function Main({ onEditAvatar, onEditProfile, onAddPlace, onCardClick }) {
             api.unlike(card._id)
                 .then( (newCard) => {
                     setCards((state) => state.map((c) => c._id === card._id ? newCard : c));
-                });
+                })
+                .catch(err => console.log(`Ошибка.....: ${err}`));;
         } else {
             api.like(card._id)
                 .then( (newCard) => {
                     setCards((state) => state.map((c) => c._id === card._id ? newCard : c));
-                });
+                })
+                .catch(err => console.log(`Ошибка.....: ${err}`));;
         }
     }
 

@@ -56,6 +56,15 @@ function App() {
         setIsImagePopupOpen(false)
     };
 
+    const handleUpdateUser = (user) => {
+        api.updateProfileInfo(user)
+            .then( (result) => {
+                setCurrentUser(result);
+                closeAllPopups();
+            })
+            .catch(err => console.log(`Ошибка.....: ${err}`));
+    }
+
     React.useEffect(() => {
         api.getProfileInfo()
             .then((profileData) => {
@@ -101,7 +110,11 @@ function App() {
                     </label>
             </PopupWithForm>
 
-            <EditProfilePopup isOpen={isEditProfilePopupOpen} onClose={closeAllPopups} />
+            <EditProfilePopup 
+                isOpen={isEditProfilePopupOpen}
+                onClose={closeAllPopups}
+                onUpdateUser={handleUpdateUser}
+            />
             <PopupWithForm name="confirm" title="Вы уверены ?" isOpen={isConfirmPopupOpen} onClose={closeAllPopups} />
             <ImagePopup isOpen={isImagePopupOpen} onClose={closeAllPopups} card={selectedCard}/>
 

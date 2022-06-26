@@ -14,6 +14,7 @@ import Main from './Main'
 import Footer from './Footer'
 import PopupWithForm from './PopupWithForm'
 import ImagePopup from './ImagePopup'
+import EditProfilePopup from './EditProfilePopup'
 
 import api from '../utils/Api.js'
 import { currentUserContext } from '../contexts/CurrentUserContext';
@@ -100,24 +101,7 @@ function App() {
                     </label>
             </PopupWithForm>
 
-            <PopupWithForm
-                name="title"
-                title="Редактировать профиль"
-                isOpen={isEditProfilePopupOpen}
-                onClose={closeAllPopups} >
-                    <label className="popup__form-group">
-                        <input type="text" name="name" placeholder="Имя" className="popup__form-field popup__form-field_field_name" required 
-                        minLength="2" maxLength="40" id="name-input" />
-                        <span className="popup__error-text name-input-error">Сообщение об ошибке</span>
-                    </label>
-                    <label className="popup__form-group">
-                        <input type="text" name="position" placeholder="Должность"
-                            className="popup__form-field popup__form-field_field_position" required
-                            minLength="2" maxLength="200"
-                            id="position-input" />
-                        <span className="popup__error-text position-input-error">Сообщение об ошибке</span>
-                    </label>
-            </PopupWithForm>
+            <EditProfilePopup isOpen={isEditProfilePopupOpen} onClose={closeAllPopups} />
             <PopupWithForm name="confirm" title="Вы уверены ?" isOpen={isConfirmPopupOpen} onClose={closeAllPopups} />
             <ImagePopup isOpen={isImagePopupOpen} onClose={closeAllPopups} card={selectedCard}/>
 

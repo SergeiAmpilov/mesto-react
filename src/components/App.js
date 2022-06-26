@@ -82,6 +82,16 @@ function App() {
         closeAllPopups();
     }
 
+    const handleAddPlaceSubmit = (cardData) => {
+        api.addCard(cardData)
+            .then( (newCard) => {
+                setCards([newCard, ...cards]); 
+            })
+            .catch(err => console.log(`Ошибка.....: ${err}`));
+
+        closeAllPopups();
+    };
+
     React.useEffect(() => {
         api.getProfileInfo()
             .then((profileData) => {
@@ -144,6 +154,7 @@ function App() {
             <AddPlacePopup
                 isOpen={isAddPlacePopupOpen}
                 onClose={closeAllPopups}
+                onAddPlace={handleAddPlaceSubmit}
             />
             
             <EditAvatarPopup
@@ -157,7 +168,7 @@ function App() {
                 onClose={closeAllPopups}
                 onUpdateUser={handleUpdateUser}
             />
-            
+
             <PopupWithForm name="confirm" title="Вы уверены ?" isOpen={isConfirmPopupOpen} onClose={closeAllPopups} />
             <ImagePopup isOpen={isImagePopupOpen} onClose={closeAllPopups} card={selectedCard}/>
 

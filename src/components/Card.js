@@ -3,9 +3,10 @@ import React from 'react';
 import trashButtonImg from '../images/trash-vector.svg';
 import { currentUserContext } from '../contexts/CurrentUserContext';
 
-function Card({element, onCardClick}) {
+function Card({element, onCardClick, onCardLike}) {
 
     const currentUser = React.useContext(currentUserContext);
+    const handleLikeClick = () => onCardLike(element);
 
     // Определяем, являемся ли мы владельцем текущей карточки
     const isOwn = element.owner._id === currentUser._id;
@@ -27,7 +28,11 @@ function Card({element, onCardClick}) {
             <div className="element__content">
                 <h2 className="element__title">{element.name}</h2>
                 <div className="element__like-group">
-                    <button className={`element__like ${cardLikeButtonClassName}`} type="button" title="Нравится"></button>
+                    <button className={`element__like ${cardLikeButtonClassName}`}
+                            type="button"
+                            title="Нравится"
+                            onClick={handleLikeClick}>        
+                    </button>
                     <p className="element__like-count">{element.likes.length}</p>
                 </div>
             </div>

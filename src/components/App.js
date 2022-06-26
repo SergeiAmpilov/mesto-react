@@ -15,6 +15,8 @@ import Footer from './Footer'
 import PopupWithForm from './PopupWithForm'
 import ImagePopup from './ImagePopup'
 import EditProfilePopup from './EditProfilePopup'
+import EditAvatarPopup from './EditAvatarPopup'
+
 
 import api from '../utils/Api.js'
 import { currentUserContext } from '../contexts/CurrentUserContext';
@@ -65,6 +67,20 @@ function App() {
             .catch(err => console.log(`Ошибка.....: ${err}`));
     }
 
+    const handleUpdateAvatar = ({avatar}) => {
+        
+        api.updateAvatar(avatar)
+            .then( (res) => {
+                setCurrentUser({
+                    ...currentUser,
+                    avatar
+                })
+            })
+            .catch(err => console.log(`Ошибка.....: ${err}`));
+        
+        closeAllPopups();
+    }
+
     React.useEffect(() => {
         api.getProfileInfo()
             .then((profileData) => {
@@ -99,16 +115,12 @@ function App() {
                     </label>
             </PopupWithForm>
 
-            <PopupWithForm
-                name="avatar"
-                title="Обновить аватар"
+            
+            <EditAvatarPopup
                 isOpen={isEditAvatarPopupOpen}
-                onClose={closeAllPopups} >
-                    <label className="popup__form-group">
-                        <input type="url" name="url" id="avatar-input" placeholder="Ссылка на картинку" className="popup__form-field popup__form-field_field_url" required />
-                        <span className="popup__error-text avatar-input-error">Сообщение об ошибке</span>
-                    </label>
-            </PopupWithForm>
+                onClose={closeAllPopups}
+                onUpdateAvatar={handleUpdateAvatar}
+            />
 
             <EditProfilePopup 
                 isOpen={isEditProfilePopupOpen}

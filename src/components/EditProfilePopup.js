@@ -40,7 +40,7 @@ function EditProfilePopup({isOpen, onClose, onUpdateUser}) {
                         name="name"
                         placeholder="Имя"
                         className="popup__form-field popup__form-field_field_name"
-                        value={name}
+                        value={name ?? ""}
                         onChange={handleNameChange}
                         required 
                         minLength="2"
@@ -54,7 +54,7 @@ function EditProfilePopup({isOpen, onClose, onUpdateUser}) {
                         name="position"
                         placeholder="Должность"
                         className="popup__form-field popup__form-field_field_position"
-                        value={description}
+                        value={description ?? ""}
                         onChange={handleDescriptionChange}
                         required
                         minLength="2"

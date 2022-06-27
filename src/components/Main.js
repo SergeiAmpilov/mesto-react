@@ -6,7 +6,14 @@ import api from '../utils/api.js'
 import { currentUserContext } from '../contexts/CurrentUserContext';
 
 
-function Main({ onEditAvatar, onEditProfile, onAddPlace, onCardClick, cards, onCardLike, onCardDelete }) {
+function Main({
+    onEditAvatar,
+    onEditProfile,
+    onAddPlace,
+    onCardClick,
+    cards,
+    onCardLike,
+    onCardDelete }) {
 
     const [isEditButtonHovered, setIsEditButtonHovered] = React.useState(false);
 

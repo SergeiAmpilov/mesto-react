@@ -3,19 +3,16 @@ import PopupWithForm from './PopupWithForm'
 
 function AddPlacePopup({isOpen, onClose, onAddPlace}) {
     
-    const [cardName, setCardName] = React.useState('');
-    const [cardLink, setCardLink] = React.useState('');
+    const [formValues, setFormValues] = React.useState({ name: "", link: "" });
 
-    const handleCardNameChange = (e) => setCardName(e.target.value);
-    const handleCardLinkChange = (e) => setCardLink(e.target.value);
+    const handleChange = (evt) => {
+        const {name, value} = evt.target;
+        setFormValues(prevState => ({ ...prevState, [name]: value }));
+    }
 
     const handleCardAddSubmit = (evt) => {
         evt.preventDefault();
-        onAddPlace({
-            name: cardName,
-            link: cardLink
-        });
-
+        onAddPlace(formValues);
     }
 
     return (
@@ -33,19 +30,19 @@ function AddPlacePopup({isOpen, onClose, onAddPlace}) {
                         className="popup__form-field popup__form-field_field_name"
                         minLength="2"
                         maxLength="30"
-                        value={cardName}
-                        onChange={handleCardNameChange}
+                        value={formValues.name}
+                        onChange={handleChange}
                         required />
                     <span className="popup__error-text place-input-error">Сообщение об ошибке</span>
                 </label>
                 <label className="popup__form-group">
                     <input type="url"
-                        name="url"
+                        name="link"
                         id="url-input"
                         placeholder="Ссылка на картинку"
                         className="popup__form-field popup__form-field_field_url"
-                        value={cardLink}
-                        onChange={handleCardLinkChange}
+                        value={formValues.link}
+                        onChange={handleChange}
                         required />
                     <span className="popup__error-text url-input-error">Сообщение об ошибке</span>
                 </label>

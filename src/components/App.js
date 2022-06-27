@@ -1,8 +1,6 @@
 import React from 'react';
 
 
-import '../index.css' 
-
 /* import images */
 
 import custoLogo from '../images/custo-logo.jpg';
@@ -76,20 +74,18 @@ function App() {
                     ...currentUser,
                     avatar
                 })
+                closeAllPopups();
             })
             .catch(err => console.log(`Ошибка.....: ${err}`));
-        
-        closeAllPopups();
     }
 
     const handleAddPlaceSubmit = (cardData) => {
         api.addCard(cardData)
             .then( (newCard) => {
                 setCards([newCard, ...cards]); 
+                closeAllPopups();
             })
             .catch(err => console.log(`Ошибка.....: ${err}`));
-
-        closeAllPopups();
     };
 
     React.useEffect(() => {
@@ -98,16 +94,12 @@ function App() {
                 setCurrentUser(profileData)
             })
             .catch(err => console.log(`Ошибка.....: ${err}`));
-    }, []);
-
-    React.useEffect(() => {
-
+        
         api.getCards()
             .then((cardList) => {
                 setCards(cardList);
             })
             .catch(err => console.log(`Ошибка.....: ${err}`));
-
     }, []);
 
     const handleCardLike = (card) => {
@@ -135,6 +127,7 @@ function App() {
                     cards.slice().filter( (c) => c._id !== card._id )
                 )
             })
+            .catch(err => console.log(`Ошибка.....: ${err}`));;
     }
 
     return (
@@ -172,20 +165,6 @@ function App() {
             <PopupWithForm name="confirm" title="Вы уверены ?" isOpen={isConfirmPopupOpen} onClose={closeAllPopups} />
             <ImagePopup isOpen={isImagePopupOpen} onClose={closeAllPopups} card={selectedCard}/>
 
-
-            <template className="item-template">
-                <li className="element">
-                    <img src={custoLogo} alt="Карачаевск" className="element__image" />
-                    <div className="element__content">
-                        <h2 className="element__title">Карачаевск</h2>
-                        <div className="element__like-group">
-                            <button className="element__like" type="button" title="Нравится"></button>
-                            <p className="element__like-count">0</p>
-                        </div>
-                    </div>
-                    <img src={trashLogo} alt="Удалить карточку" className="element__trash" />            
-                </li>
-            </template>
         </currentUserContext.Provider>
     );
 }

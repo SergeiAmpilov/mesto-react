@@ -19,7 +19,7 @@ import EditAvatarPopup from './EditAvatarPopup'
 import AddPlacePopup from './AddPlacePopup'
 
 
-import api from '../utils/Api.js'
+import api from '../utils/api.js'
 import { currentUserContext } from '../contexts/CurrentUserContext';
 
 

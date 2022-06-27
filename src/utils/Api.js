@@ -18,7 +18,7 @@ class Api {
             reqObject.body = JSON.stringify(body);
         }
 
-        return fetch(this._baseUrl + path, reqObject)
+        return fetch(`${this._baseUrl}${path}`, reqObject)
                 .then(res => res.ok ? res.json() : Promise.reject(`Ошибка: ${res.status}`));
     }
 

@@ -1,7 +1,7 @@
 import React from 'react';
 
 import Card from './Card'
-import api from '../utils/Api.js'
+import api from '../utils/api.js'
 
 import { currentUserContext } from '../contexts/CurrentUserContext';
 
